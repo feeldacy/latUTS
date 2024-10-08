@@ -1,4 +1,4 @@
-@extends('layout')
+@extends('partial.layout')
 
 @section('content')
     <div class="container mt-5 mb-5">
@@ -7,7 +7,7 @@
             <div class="col-md-12">
                 <div class="card border-0 shadow-sm rounded">
                     <div class="card-body">
-                        <form action="{{ route('posts.update', $post->id) }}" method="POST" enctype="multipart/form-data">
+                        <form action="{{ route('posts.update', $posts->id) }}" method="POST" enctype="multipart/form-data">
                             @csrf
                             @method('PUT')
 
@@ -19,7 +19,7 @@
                             <div class="form-group">
                                 <label class="font-weight-bold">JUDUL</label>
                                 <input type="text" class="form-control @error('title') is-invalid @enderror"
-                                    name="title" value="{{ old('title', $post->title) }}"
+                                    name="title" value="{{ old('title', $posts->title) }}"
                                     placeholder="Masukkan Judul Post">
 
                                 <!-- error message untuk title -->
@@ -33,7 +33,7 @@
                             <div class="form-group">
                                 <label class="font-weight-bold">KONTEN</label>
                                 <textarea class="form-control @error('content') is-invalid @enderror" name="content" rows="5"
-                                    placeholder="Masukkan Konten Post">{{ old('content', $post->content) }}</textarea>
+                                    placeholder="Masukkan Konten Post">{{ old('content', $posts->content) }}</textarea>
 
                                 <!-- error message untuk content -->
                                 @error('content')
